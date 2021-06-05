@@ -96,7 +96,7 @@ You will meet with an instructor to get your app idea approved. Be sure to write
 
 Your project is due on Saturday, March 26th at 3:00 PM CST. You will present your project and show your code to classmates and instructors.
 
-:heavy_check_mark: Submit your project by adding an issue to [this repo](https://git.generalassemb.ly/seirfx-monstera/project-2/issues).
+:heavy_check_mark: Submit your project by adding an issue to [this repo](https://git.generalassemb.ly/flex-323/project2/issues).
 
 Your issue should include:
 
