@@ -35,7 +35,7 @@ You will use Handlebars, or EJS to build templates that do server-side rendering
 
 You will meet with an squad leader to get your app idea approved. Be sure to write out what features you will need to build in order to meet MVP and some stretch goal ideas.
 
-**Submit Project proposal [here](https://git.generalassemb.ly/staging-323/project-2/issues/new?assignees=&labels=&template=project-proposal-submission.md&title=Your+Name+%2B+Squad+Lead) by Friday June 11th 7:00pm CST.**
+**Submit Project proposal [here](https://git.generalassemb.ly/flex-323/project-2/issues/new?assignees=&labels=&template=project-proposal-submission.md&title=Your+Name+%2B+Squad+Lead) by Friday June 11th 7:00pm CST.**
 
 ### &#x1F534; Mandatory to pass:
 #### MVP - Minimum Viable Product
