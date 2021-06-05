@@ -8,16 +8,12 @@ We will be holding stand ups with instructors at **5:30PM CST (Tuesday/Wednesday
 There are no full day classes during project weeks, but we expect you to be working on your project from at least **5:30PM - 9:45PM CST (Tues/Wed)** and at least **9AM - 5PM CST (Sat)** during class days and be available during that time for TA hours or any meetings with instructors as needed. You are STILL required to show up to Outcomes during project weeks.   
 
 We also will take attendance during project week, as follows:
-
-  - **Saturday, June 12th**: You're required to meet up with your instructor at whatever time you schedule to approve your project idea.
+  - **Friday June 11th**: Project Proposals due 7pm CST (see below for more info on this).
+  - **Saturday, June 12th**: You're required to meet up with your squad leader at 1:30pm CST and get approved for your project idea.
   - **Daily (Each Class Day)**: Your attendance will be taken during **STANDUP meetings starting Tuesday 15th**. 
   - **Tuesday, June 29th**: Project presentation day! You're required to be in the class zoom starting at 5:30 PM CST
 
 _Failure to make an attendance check will result in an unexcused absence for both morning or/and afternoon for that day_.
-
-## Meetings with instructors
-
-You will meet with an instructor to get your app idea approved. Be sure to write out what features you will need to build in order to meet MVP and some stretch goal ideas. See proposal requirements below.
 
 ## Technical Requirements
 For this project, you will be making a full CRUD app using the technologies outlined below. When thinking of an app idea, try to frame the project in terms of trying to solve a "problem" and think about the purpose of the app, who would use it, etc. The problem doesn't have to be anything intense and can be something small and simple! For example:
@@ -25,14 +21,21 @@ For this project, you will be making a full CRUD app using the technologies outl
   >**Problem:** I have a huge enamel pin collection and want to organize it all in one place<br>
   >**General App Idea/Purpose:** An app that allows me to catalogue all my pins by category <br>
   >**Who Would Use It:** Pin collectors
+  
+You will use Handlebars, or EJS to build templates that do server-side rendering, or build a frontend that uses fetch or axios and DOM-manipulation based on JSON from your backend (in the style of the [GAphy app](https://git.generalassemb.ly/flex-323/express-api-lab))
 
 ### &#128994; Proposals:
 #### Proposal Requirements
 
 * User stories detailing app functionality
+* MVP + Stretch Goals
 * Wireframes with basic page layouts
 * Models including field names and their datatypes
 * A list of routes (e.g. `POST /pins/ allows users to post a picture of a pin`)
+
+You will meet with an squad leader to get your app idea approved. Be sure to write out what features you will need to build in order to meet MVP and some stretch goal ideas.
+
+**Submit Project proposal [here](https://git.generalassemb.ly/staging-323/project-2/issues/new?assignees=&labels=&template=project-proposal-submission.md&title=Your+Name+%2B+Squad+Lead) by Friday June 11th 7:00pm CST.**
 
 ### &#x1F534; Mandatory to pass:
 #### MVP - Minimum Viable Product
@@ -72,14 +75,15 @@ We will walk through deploying your app to production next week. We'll use a ser
 
 [Heroku Node App Deployment Docs](https://devcenter.heroku.com/categories/nodejs-support)
 
-To prepare for the Heroku deployment lesson on **MARCH 23rd**, please make sure you create a new GitHub repo for your project and have a basic express server running.
+To prepare for the Heroku deployment lesson on **June 12th**.
 
 
 ## Technical Demonstration
 
 All projects will be presented to the class. Your presentation should be:
 
-* **Approximately 5 minutes in length**
+* **Approximately 5-10 minutes in length**
+* Save some time for Q&A at the end
 * Shows off all features of the app
 * Explains the technical details
 * Explains the technical challenges
@@ -94,9 +98,9 @@ You will meet with an instructor to get your app idea approved. Be sure to write
 ## How to Submit Your Project
 
 
-Your project is due on Saturday, March 26th at 3:00 PM CST. You will present your project and show your code to classmates and instructors.
+Your project is due on Tuesday, June 29h at 5:00 PM CST. You will present your project and show your code to classmates and instructors.
 
-:heavy_check_mark: Submit your project by adding an issue to [this repo](https://git.generalassemb.ly/flex-323/project2/issues).
+:heavy_check_mark: Submit your project by adding an issue to [this repo](https://git.generalassemb.ly/flex-323/project2-gallery/issues).
 
 Your issue should include:
 
@@ -110,15 +114,30 @@ Your issue should include:
 
 We ask that you take the following steps when dealing with technical questions...
 
-- Try something else
 - Google your exact problem or error
 - Reference the appropriate lesson plan
 - Use the [rubber duck method](https://rubberduckdebugging.com/)
+- After this steps if you still facing the issue, post your question on the Debuging Channel. (Explain your issue and post a piece of your code in the thread, so the channel don't get to much clutter.)
 
-After this steps if you still facing the issue, post your question on the Debuging Channel.
-Explain your issue and post a piece of your code in the thread, so the channel don't get to much clutter.
+If your question is non-technical -- you're feeling overwhelmed, or you have questions about a homework or project prompt -- please reach out directly to an **Sqaud Leader** as soon as possible.
 
-If your question is non-technical -- you're feeling overwhelmed, or you have questions about a homework or project prompt -- please reach out directly to an **ALL instructor in the SAME chat** as soon as possible.
+Also:
+- Use your squad standup and Study Room to work with people on the same problem.
+- Use in-class and out-of-class Office Hours*
+
+*: token required
+
+### Office Hours Tokens
+
+Each student will get *6* tokens to utilize Office Hours during Project 2. Tokens are designed to get you industry ready and be ready to debug issues yourself. 
+
+Each time a student signs up for Office Hours - during in-class office hours, or inidividual insturctor office hours outside of class time - takes 1 token. Office hours get you 15 minutes of debugging support.
+
+To maximize your time, make sure to
+
+Squad standups, and logistical questions (e.g. about requirements, project proposal, times, etc) to you squad-lead to not take a token. Study Rooms do not take a token.
+
+
 
 
 
@@ -155,19 +174,5 @@ Are you able to defend why you implemented your solution in a certain way? Can y
 * **[Presenting Information Architecture](http://webstyleguide.com/wsg3/3-information-architecture/4-presenting-information.html)**
 * **[Mongo Documentation](https://docs.mongodb.com/manual/)**
 * **[Mongoose Documentation](http://mongoosejs.com/docs/guide.html)**
-* **[Mongo Cheatsheet](https://git.generalassemb.ly/seir-9-14/student-resources/blob/master/2_full_stack_dev/w05d05/instructor_notes/mongo_cheatsheet.md)**
 </details>
 <hr>  
-
-## Inspiration - Projects by Previous SEI Students
-
-- [Cheerups](https://warm-beach-18335.herokuapp.com/cheerups)
-- [CodeSnips](https://stark-plateau-60254.herokuapp.com/)
-- [flyerPole](https://flyerpole.herokuapp.com/)
-- [LeagueManager](https://aqueous-harbor-40707.herokuapp.com/)
-- [Yarn](https://thawing-chamber-93915.herokuapp.com/)
-- [GitFit](https://salty-springs-24805.herokuapp.com/)
-- [Civilized Coffee](https://infinite-shelf-28534.herokuapp.com/)
-- [Pitched](https://pitched-app.herokuapp.com/)
-- [PC Builder](https://pc-builder.herokuapp.com/)
-- [Women of STEM](https://womenofstem.herokuapp.com/astro)
