@@ -133,7 +133,7 @@ Each student will get *6* tokens to utilize Office Hours during Project 2. Token
 
 Each time a student signs up for Office Hours - during in-class office hours, or inidividual insturctor office hours outside of class time - takes 1 token. Office hours get you 15 minutes of debugging support.
 
-To maximize your time, make sure to
+To maximize your time, make sure to prepared to discuss: 1.) "expected behavior" 2.) "observed behavior" 3.) debugging tried so far - console-logs server side, developer tools on the frontend, etc. 4.) solutions already tried.
 
 Squad standups, and logistical questions (e.g. about requirements, project proposal, times, etc) to you squad-lead to not take a token. Study Rooms do not take a token.
 
