@@ -101,7 +101,7 @@ You will meet with an instructor to get your app idea approved. Be sure to write
 
 Your project is due on Tuesday, January 18h at 6:00 PM EST. You will present your project and show your code to classmates and instructors.
 
-:heavy_check_mark: Submit your project by adding an issue to [this repo](https://git.generalassemb.ly/Flex-929/project2-gallery/issues).
+:heavy_check_mark: Submit your project by adding an issue to [this repo](https://git.generalassemb.ly/Flex-928/project2-gallery/issues).
 
 Your issue should include:
 
