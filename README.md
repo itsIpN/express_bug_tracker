@@ -3,15 +3,16 @@
 # Project #2: Building Your First Full-Stack Application
 
 ## Attendance
-We will be holding stand ups with instructors at **5:30PM CST (Tuesday/Wednesday) and 11:00AM CST (Saturday)** to have a daily check on the progress your application.
+We will be holding stand ups with instructors at **6:30PM EST (Tuesday/Wednesday) and 12:00PM EST (Saturday)** to have a daily check on the progress your application.
 
-There are no full day classes during project weeks, but we expect you to be working on your project from at least **5:30PM - 9:45PM CST (Tues/Wed)** and at least **9AM - 5PM CST (Sat)** during class days and be available during that time for TA hours or any meetings with instructors as needed. You are STILL required to show up to Outcomes during project weeks.   
+There are no full day classes during project weeks, but we expect you to be working on your project from at least **6:30PM - 10:45PM EST (Tues/Wed)** and at least **10AM - 6PM EST (Sat)** during class days and be available during that time for TA hours or any meetings with instructors as needed. You are STILL required to show up to Outcomes during project weeks.   
 
 We also will take attendance during project week, as follows:
-  - **Friday June 11th**: Project Proposals due 7pm CST (see below for more info on this).
-  - **Saturday, June 12th**: You're required to meet up with your squad leader at 1:30pm CST and get approved for your project idea.
-  - **Daily (Each Class Day)**: Your attendance will be taken during **STANDUP meetings starting Tuesday 15th**. 
-  - **Tuesday, June 29th**: Project presentation day! You're required to be in the class zoom starting at 5:30 PM CST
+  - **We will Not have class on**: 12/25, 12/28, 1/1
+  - **Wednesday December 22nd**: Project Proposals due 6:30pm EST (start of class, see below for more info on this).
+  - **Tuesday, January 3rd**: You're required to meet up with your squad leader at 6:30pm EST for stand up.
+  - **Daily (Each Class Day)**: Your attendance will be taken during **STANDUP meetings starting Wednesday 22nd**. 
+  - **Tuesday, January 18th**: Project presentation day! You're required to be in the class zoom starting at 6:30 PM EST
 
 _Failure to make an attendance check will result in an unexcused absence for both morning or/and afternoon for that day_.
 
@@ -22,7 +23,7 @@ For this project, you will be making a full CRUD app using the technologies outl
   >**General App Idea/Purpose:** An app that allows me to catalogue all my pins by category <br>
   >**Who Would Use It:** Pin collectors
   
-You will use Handlebars, or EJS to build templates that do server-side rendering, or build a frontend that uses fetch or axios and DOM-manipulation based on JSON from your backend (in the style of the [GAphy app](https://git.generalassemb.ly/flex-323/express-api-lab))
+You will use Handlebars, or EJS to build templates that do server-side rendering, or build a frontend that uses fetch or axios and DOM-manipulation based on JSON from your backend (in the style of the [GAphy app](https://git.generalassemb.ly/Flex-929/express-api-lab))
 
 ### &#128994; Proposals:
 #### Proposal Requirements
@@ -35,7 +36,7 @@ You will use Handlebars, or EJS to build templates that do server-side rendering
 
 You will meet with an squad leader to get your app idea approved. Be sure to write out what features you will need to build in order to meet MVP and some stretch goal ideas.
 
-**Submit Project proposal [here](https://git.generalassemb.ly/flex-323/project-2/issues/new?assignees=&labels=&template=project-proposal-submission.md&title=Your+Name+%2B+Squad+Lead) by Friday June 11th 7:00pm CST.**
+**Submit Project proposal [here](https://git.generalassemb.ly/Flex-929/project-2/issues/new?assignees=&labels=&template=project-proposal-submission.md&title=Your+Name+%2B+Squad+Lead) by Wednesday December 22th 7:00pm CST.**
 
 ### &#x1F534; Mandatory to pass:
 #### MVP - Minimum Viable Product
@@ -100,7 +101,7 @@ You will meet with an instructor to get your app idea approved. Be sure to write
 
 Your project is due on Tuesday, June 29h at 5:00 PM CST. You will present your project and show your code to classmates and instructors.
 
-:heavy_check_mark: Submit your project by adding an issue to [this repo](https://git.generalassemb.ly/flex-323/project2-gallery/issues).
+:heavy_check_mark: Submit your project by adding an issue to [this repo](https://git.generalassemb.ly/Flex-929/project2-gallery/issues).
 
 Your issue should include:
 
