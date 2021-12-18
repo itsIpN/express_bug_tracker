@@ -23,7 +23,7 @@ For this project, you will be making a full CRUD app using the technologies outl
   >**General App Idea/Purpose:** An app that allows me to catalogue all my pins by category <br>
   >**Who Would Use It:** Pin collectors
   
-You will use Handlebars, or EJS to build templates that do server-side rendering, or build a frontend that uses fetch or axios and DOM-manipulation based on JSON from your backend (in the style of the [GAphy app](https://git.generalassemb.ly/Flex-929/express-api-lab))
+You will use Handlebars, or EJS to build templates that do server-side rendering, or build a frontend that uses fetch or axios and DOM-manipulation based on JSON from your backend (in the style of the [GAphy app](https://git.generalassemb.ly/Flex-928/express-api-lab))
 
 ### &#128994; Proposals:
 #### Proposal Requirements
