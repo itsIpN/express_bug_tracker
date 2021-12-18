@@ -93,13 +93,13 @@ All projects will be presented to the class. Your presentation should be:
 
 You will be sharing your app and your code.  Be prepared to answer questions from the instructors and other students.
 
-**Saturday, June 12th - Mandatory**<br>
+**Wednesday, December 22th - Mandatory**<br>
 You will meet with an instructor to get your app idea approved. Be sure to write out what features you will need to build in order to meet MVP and some stretch goal ideas.
 
 ## How to Submit Your Project
 
 
-Your project is due on Tuesday, June 29h at 5:00 PM CST. You will present your project and show your code to classmates and instructors.
+Your project is due on Tuesday, January 18h at 6:00 PM EST. You will present your project and show your code to classmates and instructors.
 
 :heavy_check_mark: Submit your project by adding an issue to [this repo](https://git.generalassemb.ly/Flex-929/project2-gallery/issues).
 
