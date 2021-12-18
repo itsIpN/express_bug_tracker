@@ -8,7 +8,7 @@ We will be holding stand ups with instructors at **6:30PM EST (Tuesday/Wednesday
 There are no full day classes during project weeks, but we expect you to be working on your project from at least **6:30PM - 10:45PM EST (Tues/Wed)** and at least **10AM - 6PM EST (Sat)** during class days and be available during that time for TA hours or any meetings with instructors as needed. You are STILL required to show up to Outcomes during project weeks.   
 
 We also will take attendance during project week, as follows:
-  - **We will Not have class on**: :lotus_position: 12/25, 12/28, 12/29, 1/1 :lotus_position:
+  - **We will Not have class on**: :lotus_position: 12/25, 12/28, 12/29, 1/1, 1/15 :lotus_position:
   - **Wednesday December 22nd**: Project Proposals due 6:30pm EST (start of class, see below for more info on this).
   - **Tuesday, January 3rd**: You're required to meet up with your squad leader at 6:30pm EST for stand up.
   - **Daily (Each Class Day)**: Your attendance will be taken during **STANDUP meetings starting Wednesday 22nd**. 
