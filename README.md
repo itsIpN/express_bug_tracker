@@ -3,16 +3,14 @@
 # Project #2: Building Your First Full-Stack Application
 
 ## Attendance
-We will be holding stand ups with instructors at **6:30PM EST (Tuesday/Wednesday) and 12:00PM EST (Saturday)** to have a daily check on the progress your application.
+We will be holding stand ups with instructors at **6:30PM PST (Tuesday/Wednesday) and 10:00AM PST (Saturday)** to have a daily check on the progress your application.
 
-There are no full day classes during project weeks, but we expect you to be working on your project from at least **6:30PM - 10:45PM EST (Tues/Wed)** and at least **10AM - 6PM EST (Sat)** during class days and be available during that time for TA hours or any meetings with instructors as needed. You are STILL required to show up to Outcomes during project weeks.   
+There are no full day classes during project weeks, but we expect you to be working on your project from at least **6:30PM - 10:45PM PST (Tues/Wed)** and at least **10AM - 6PM PST (Sat)** during class days and be available during that time for TA hours or any meetings with instructors as needed. You are STILL required to show up to Outcomes during project weeks.   
 
 We also will take attendance during project week, as follows:
-  - **We will Not have class on**: :lotus_position: 12/25, 12/28, 12/29, 1/1, 1/15 :lotus_position:
-  - **Wednesday December 22nd**: Project Proposals due 6:30pm EST (start of class, see below for more info on this).
-  - **Tuesday, January 3rd**: You're required to meet up with your squad leader at 6:30pm EST for stand up.
-  - **Daily (Each Class Day)**: Your attendance will be taken during **STANDUP meetings starting Wednesday 22nd**. 
-  - **Tuesday, January 18th**: Project presentation day! You're required to be in the class zoom starting at 6:30 PM EST
+  - **Wednesday, July 20th**: Project Proposals due 6:30pm EST (start of class, see below for more info on this).
+  - **Daily (Each Class Day)**: Your attendance will be taken during **STANDUP meetings starting Wednesday, the 20th**. 
+  - **Wednesday, August 3rd**: Project presentation day! You're required to be in the class zoom starting at 6:30 PM EST
 
 _Failure to make an attendance check will result in an unexcused absence for both morning or/and afternoon for that day_.
 
@@ -36,17 +34,17 @@ You will use Handlebars, or EJS to build templates that do server-side rendering
 
 You will meet with an squad leader to get your app idea approved. Be sure to write out what features you will need to build in order to meet MVP and some stretch goal ideas.
 
-**Submit Project proposal [here](https://git.generalassemb.ly/Flex-928/project-2/issues/new?assignees=&labels=&template=project-proposal-submission.md&title=Your+Name+%2B+Squad+Lead) by Wednesday December 22th 7:00pm CST.**
+**Submit Project proposal by Wednesday July 20th 7:00pm CST.**
 
 ### &#x1F534; Mandatory to pass:
 #### MVP - Minimum Viable Product
 
-* A working full-stack application, built by you, using **Node.js, Mongoose, Express and EJS || HBS**
+* A working full-stack application, built by you, using **Node.js, Mongoose, Express and EJS **
 * Adhere to the **MVC** file structure: Models, Views, Controllers
 * At least one model with all 7 **RESTful routes** and full **CRUD**.
-* :heavy_exclamation_mark: A git repository **not inside the class repo**.  
+* :heavy_exclamation_mark: A git repository.  
 * At **least one** Github commit per day of working on the project.
-* **Be deployed online** and accessible to the public via **Heroku**
+* **Be deployed online** and accessible to the public via **Heroku**.
 * **A ``README.md`` file** with explanations of the technologies used, the approach was taken, unsolved problems, and notes to yourself so you can come back to your project later in the course and be able to pick up your train of thought, etc
 * Inside Your `README.md`:
     * Include User Stories
@@ -57,9 +55,8 @@ You will meet with an squad leader to get your app idea approved. Be sure to wri
 #### Recommended Features
 
 * Add a second model that are associated in some way (e.g. one-to-many, many-to-many, etc) 
-* Use EJS or HBS views
 * Include portfolio-quality styling
-* Use a CSS framework like Skeleton, Bootstrap, Materialize, etc...
+* Use a CSS framework like Skeleton, Bootstrap, Materialize, Semantic UI, etc...
 * Use a third party API
 * Incorporate **Google Maps**
 * Allow users to upload files with **Multer**
@@ -76,7 +73,7 @@ We will walk through deploying your app to production next week. We'll use a ser
 
 [Heroku Node App Deployment Docs](https://devcenter.heroku.com/categories/nodejs-support)
 
-To prepare for the Heroku deployment lesson on **June 12th**.
+To prepare for the Heroku deployment lesson on **July 27th**.
 
 
 ## Technical Demonstration
@@ -93,13 +90,13 @@ All projects will be presented to the class. Your presentation should be:
 
 You will be sharing your app and your code.  Be prepared to answer questions from the instructors and other students.
 
-**Wednesday, December 22th - Mandatory**<br>
+**Wednesday, July 20th - Mandatory**<br>
 You will meet with an instructor to get your app idea approved. Be sure to write out what features you will need to build in order to meet MVP and some stretch goal ideas.
 
 ## How to Submit Your Project
 
 
-Your project is due on Tuesday, January 18h at 6:00 PM EST. You will present your project and show your code to classmates and instructors.
+Your project is due on Wednesday, August 3rd at 6:00 PM PST. You will present your project and show your code to classmates and instructors.
 
 :heavy_check_mark: Submit your project by adding an issue to [this repo](https://git.generalassemb.ly/Flex-928/project2-gallery/issues).
 
