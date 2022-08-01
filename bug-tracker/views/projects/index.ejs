@@ -1,0 +1,15 @@
+<%- include(`../partials/head`) %>
+<%- include(`../partials/header`) %>
+<a class="button" href="/main">Go back</a>
+<ul>
+<% projects.forEach((projects, index) => { %>
+   <li> <a href="/projects/<%=projects._id %>"> <%= projects.title %></a></li>
+
+
+<% }) %>
+</ul>
+<div> <input type="button" onclick="location.href=`/projects/new`;" value="Track new bug"></div>
+
+
+
+<%- include(`../partials/footer`) %>

@@ -1,0 +1,16 @@
+<%- include(`../partials/head`) %>
+<%- include(`../partials/header`) %>
+<a class="btn btn-outline-primary" href="/main/roles">User Accounts</a>
+<a class="btn btn-outline-primary" href="/index">Bug List</a>
+<ul>
+<% projects.forEach((projects, index) => { %>
+   <li> <a href="/projects/<%=projects._id %>"> <%= projects.title %></a></li>
+
+
+<% }) %>
+</ul>
+<div> <a href="/projects/new" class="btn btn-outline-primary">Add New Project</a> 
+
+
+
+<%- include(`../partials/footer`) %>

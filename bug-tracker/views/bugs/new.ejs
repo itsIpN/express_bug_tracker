@@ -1,0 +1,52 @@
+<%- include(`../partials/head`) %>
+<%- include(`../partials/header`) %>
+
+<h1>Track New Bug</h1>
+<a class="button" href="/main">Go back</a>
+<form action="/index" method="POST">
+    <label for="title">
+        Title
+    </label>
+        <input id="title" type="text" name="title" autofocus required>
+    <label for="comments">
+        Entry
+    </label>
+        <textarea id="comments" name="comments" cols="30" rows="10" required></textarea>
+    <label for="project">
+        Project:
+        <input id="project" type="text" name="project" value="<%= project.title %>" readonly>
+    </label>
+       
+    <label for="status">
+        Status
+    </label>
+    <div class="input-group">
+        <select class="custom-select" id="status" name="status">
+          <option selected>Status</option>
+          <option value="Not being worked on">Not being worked on</option>
+          <option value="Work in Progress">Work in Progress</option>
+          <option value="Fixed">Fixed</option>
+        </select>
+      </div>
+    <label for="priority">
+        Priority
+    </label>
+      <div class="input-group">
+        <select class="custom-select" id="priority" name="priority">
+          <option selected>Priority</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      </div>
+    <label for="fixed">
+        Is the bug fixed?
+    </label>
+        <input id="fixed" type="checkbox" name="fixed">
+    <button class="button" type="submit">Add</button>
+</form>
+
+
+<%- include(`../partials/footer`) %>

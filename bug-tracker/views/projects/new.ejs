@@ -1,0 +1,20 @@
+<%- include(`../partials/head`) %>
+<%- include(`../partials/header`) %>
+
+<h1>Add New Project</h1>
+<a class="button" href="/main">Go back</a>
+<form action="/projects" method="POST">
+    <label for="title">
+        Title
+        <input id="title" type="text" name="title" autofocus required>
+    </label>
+    <label for="comments">
+        Entry
+        <textarea id="comments" name="comments" cols="30" rows="10" required></textarea>
+    </label>
+    <button class="button" type="submit">Add</button>
+</form>
+
+
+
+<%- include(`../partials/footer`) %>

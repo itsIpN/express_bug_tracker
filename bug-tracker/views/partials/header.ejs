@@ -1,0 +1,23 @@
+<% if (user)console.log(`################################
+ USER: ${user} 
+ ################################`) %>
+<header>
+    <h1>
+        <% if(user) { %>
+            <a href="/main">Bug Tracker</a>
+            <% } else { %>
+            <a href="/user/login">Bug Tracker</a>
+            <% } %>
+    </h1>
+
+    <nav>
+        <% if(user) { %>
+        <a href="/user/logout" class="btn btn-outline-primary">Logout</a>
+        <a href="/user/profile" class="btn btn-outline-primary">Profile</a>
+        <% } else { %>
+        <a href="/user/register" class="btn btn-outline-primary">Register</a>
+        <a href="/user/login" class="btn btn-outline-primary">Login</a>
+        <% } %>
+    </nav>
+</header>
+<main>

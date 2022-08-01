@@ -1,0 +1,99 @@
+<%- include(`../partials/head`) %>
+<%- include(`../partials/header`) %>
+
+<h1>Edit Bug Info</h1>
+<a class="button" href="/index/<%= foundBugs._id%>">Back to Bug Page</a>
+<a class="button" href="/projects/<%= foundProject._id%>">Back to Project Page</a>
+<form action="/index/<%= foundBugs._id %>?_method=PATCH" method="POST">
+    <label for="title">
+        Title
+    </label>
+        <input id="title" type="text" name="title" value="<%= foundBugs.title %>" autofocus required>
+    <label for="comments">
+        Entry
+    </label>
+        <textarea id="comments" name="comments" cols="30" rows="10"  required><%= foundBugs.comments %></textarea>
+    <label for="project">
+        Project
+    </label>
+        <input id="project" type="text" name="project" value="<%=foundBugs.project %>" disabled>
+    <label for="status">
+        Status
+    </label>
+    <div class="input-group">
+        <select class="custom-select" id="status" name="status">
+          <option value="<%= foundBugs.status %>" selected><%=foundBugs.status %></option>
+            <% if(foundBugs.status == `Not being worked on`) { %>
+                <option value="Work in Progress">Work in Progress</option>
+                <option value="Fixed">Fixed</option>
+            <% } else if(foundBugs.status == `Work in Progress`) { %>
+                <option value="Not being worked on">Not being worked on</option>
+                <option value="Fixed">Fixed</option>
+            <% } else if(foundBugs.status == `Fixed`) { %>
+                <option value="Not being worked on">Not being worked on</option>
+                <option value="Work in Progress">Work in Progress</option>
+            <% } %>
+        </select>
+      </div>
+    <label for="priority">
+        Priority
+    </label>
+      <div class="input-group">
+        <select class="custom-select" id="priority" name="priority">
+            <option value="<%= foundBugs.priority %>" selected><%=foundBugs.priority %></option>
+            <% if(foundBugs.priority == `1`) { %>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            <% } else if(foundBugs.priority == `2`) { %>
+                <option value="1">1</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            <% } else if(foundBugs.priority == `3`) { %>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            <% } else if(foundBugs.priority == `4`) { %>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="5">5</option>
+            <% } else if(foundBugs.priority == `5`) { %>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            <% } %>
+
+        </select>
+      </div>
+      <% if(role === `Admin` || role === `Team Leader`) { %>
+      <div class="input-group">
+        <select class="custom-select" id="assignedTo" name="assignedTo">
+          <option value="<%= foundBugs.assignedTo %>" selected>            <% if(foundBugs.assignedTo == `unassigned`) { %> 
+            <%= foundBugs.assignedTo %> 
+            <% } else { %>
+            <% for(let i = 0; i < userList.length; i++) { %>
+                <% if(userList[i]._id == foundBugs.assignedTo) { %>
+                <%= userList[i].firstName %> <%= userList[i].lastName %>
+                <% }}} %>
+          </option>
+          <% userList.forEach((userList, index) => { %>
+            <% if(userList._id != foundBugs.assignedTo) { %> 
+            <option value="<%= userList._id %>"><%= userList.firstName %> <%= userList.lastName %></option>
+         
+         <% }}) %>
+        </select>
+      </div>
+      <% } %>
+    <label for="fixed">
+        Is the bug fixed?
+        <input id="fixed" type="checkbox" name="fixed" <% if(foundBugs.fixed){ %> checked <% } %>>
+    </label>
+    <button class="button" type="submit">Update</button>
+</form>
+
+<%- include(`../partials/footer`) %>

@@ -1,0 +1,128 @@
+<%- include(`../partials/head`) %>
+<%- include(`../partials/header`) %>
+<a class="button" href="/main/roles">Go back</a>
+
+
+
+
+<div>
+   <canvas id="statusChart"  height="300"></canvas>
+</div>
+
+<div>
+   <canvas id="priorityChart"  height="300"></canvas>
+</div>
+
+<div>
+   <table class="table align-middle mb-0 bg-white" id="bugTable">
+       <thead class="bg-light">
+         <tr>
+           <th class="th-sm">Bug Name</th>
+           <th class="th-sm">Project</th>
+           <th class="th-sm">Priority</th>
+           <th class="th-sm">Status</th>
+           <th class="th-sm">Assigned To</th>
+           <th class="th-sm">Actions</th>
+         </tr>
+       </thead>
+       <tbody>
+       <% bugs.forEach((bugs, index) => { %>
+         <tr>
+           <td>
+             <div class="d-flex align-items-center">
+               <div class="ms-3">
+                 <p class="fw-bold mb-1"><%= bugs.title %></p>
+               </div>
+             </div>
+           </td>
+           <td><%= bugs.project %></td>
+           <td><%= bugs.priority %></td>
+           <td><%= bugs.status %></td>
+         <% if(user == `unassigned`) { %> 
+            <td>unassigned</td>
+         <% } else { %>
+           <td><%= user.firstName %> <%= user.lastName %></td>
+         <% } %>
+           <td>
+
+           <a href="/index/<%= bugs._id %>" class="btn btn-link btn-sm btn-rounded">
+               Details
+           </a>
+
+           </td>                    
+         </tr>
+       <% }) %> 
+       </tbody>
+   </table>
+   </div>
+
+
+   <script>
+      <% let naserv = 0; %>
+      <% let wipserv = 0; %>
+      <% for(let i = 0; i < bugs.length; i++) { %>
+          <% if(bugs[i].status == `Not being worked on`) {%>
+              <% naserv = naserv + 1 %>
+          <% } if(bugs[i].status == `Work in Progress`) { %>
+              <% wipserv = wipserv + 1%>
+          <% } }%>    
+      let nacli = <%= naserv %>;
+      let wipcli = <%= wipserv %>;
+      var stat = $(`#statusChart`);
+      var statChart = new Chart(stat, {
+          type: `doughnut`,
+          data: {
+              labels: [`Not being worked on`, `Work in Progress`],
+              datasets: [{
+                  label: `Points`,
+                  backgroundColor: [`#f1c40f`, `#e67e22`],
+                  data: [nacli, wipcli]
+              }]
+          },
+          options: {
+              responsive: false
+          }
+      })
+  </script>
+
+<script>
+   <% let oneServ = 0; %>
+   <% let twoServ = 0; %>
+   <% let threeServ = 0; %>
+   <% let fourServ = 0; %>
+   <% let fiveServ = 0; %> 
+   <% for(let i = 0; i < bugs.length; i++) { %>
+       <% if(bugs[i].status != `Fixed`) {%>
+       <% if(bugs[i].priority == 1) {%>
+           <% oneServ = oneServ + 1 %>
+       <% } if(bugs[i].priority == 2) { %>
+           <% twoServ = twoServ + 1%>
+       <% } if(bugs[i].priority == 3) { %>
+           <% threeServ = threeServ + 1%>
+       <% } if(bugs[i].priority == 4) { %>
+           <% fourServ = fourServ + 1%>
+       <% } if(bugs[i].priority == 5) { %>
+           <% fiveServ = fiveServ + 1%>            
+       <% } } }%>    
+   let oneCli = <%= oneServ %>;
+   let twoCli = <%= twoServ %>;
+   let threeCli = <%= threeServ %>;
+   let fourCli = <%= fourServ %>;
+   let fiveCli = <%= fiveServ %>;
+   var stat = $(`#priorityChart`);
+   var statChart = new Chart(stat, {
+       type: `doughnut`,
+       data: {
+           labels: [`1`, `2`, `3`, `4`, `5`],
+           datasets: [{
+               label: `Points`,
+               backgroundColor: [`red`, `yellow`, `turqouise`, `green`, `blue`],
+               data: [oneCli, twoCli, threeCli, fourCli, fiveCli]
+           }]
+       },
+       options: {
+           responsive: false
+       }
+   })
+</script>  
+<%- include(`../partials/footer`) %>

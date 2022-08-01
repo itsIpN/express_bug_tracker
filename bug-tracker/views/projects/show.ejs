@@ -1,0 +1,177 @@
+<%- include(`../partials/head`) %>
+<%- include(`../partials/header`) %>
+
+<h1><%= foundProject.title %></h1>
+<a class="button" style="margin: 1rem;" href="/main">Main Page</a>
+<div class="">
+    <div class="">
+        <p><%= foundProject.comments %></p>
+
+        <% if (currentUser === foundProject.user.toString() || role === "Admin" || role === "Team Leader") { %>
+        <a class="btn" href="/projects/<%= foundProject._id %>/edit">Edit</a>
+        <form class="delete-form" action="/projects/<%= foundProject._id %>?_method=DELETE" method="POST">
+            <input type="submit" value="Delete" class="btn">
+        </form>
+        <% } else { %>
+        <p style="color: red">You can't edit or delete this project</p>
+        <%  } %>
+        <div> <a href="/index/new?project=<%=foundProject._id %>" class="btn"> Track New Bug</a></div>
+    </div>
+</div>
+
+<div>
+    <canvas id="statusChart"  height="300"></canvas>
+</div>
+<div>
+    <canvas id="unassignedChart"  height="300"></canvas>
+</div>
+<div>
+    <canvas id="priorityChart"  height="300"></canvas>
+</div>
+<div>
+    <table class="table align-middle mb-0 bg-white" id="bugTable">
+        <thead class="bg-light">
+          <tr>
+            <th class="th-sm">Bug Name</th>
+            <th class="th-sm">Project</th>
+            <th class="th-sm">Priority</th>
+            <th class="th-sm">Status</th>
+            <th class="th-sm">Assigned To</th>
+            <th class="th-sm">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+        <% foundBug.forEach((foundBug, index) => { %>
+          <tr>
+            <td>
+              <div class="d-flex align-items-center">
+                <div class="ms-3">
+                  <p class="fw-bold mb-1"><%= foundBug.title %></p>
+                </div>
+              </div>
+            </td>
+            <td><%= foundBug.project %></td>
+            <td><%= foundBug.priority %></td>
+            <td><%= foundBug.status %></td>
+            <% if(foundBug.assignedTo === `unassigned`) { %>
+                <td><%= foundBug.assignedTo %></td>
+            <% } else { %> 
+                <% for(let i = 0; i < userList.length; i++) { %>
+                    <% if(userList[i]._id == foundBug.assignedTo) { %>
+                        <td><%= userList[i].firstName %> <%= userList[i].lastName %></td>        
+                    <% }}} %>
+            <td>
+
+            <a href="/index/<%= foundBug._id %>" class="btn btn-link btn-sm btn-rounded">
+                Details
+            </a>
+
+            </td>                    
+          </tr>
+        <% }) %> 
+        </tbody>
+    </table>
+    </div>
+    
+<script>
+    $(document).ready( function () {
+    $('#bugTable').DataTable();
+    } );
+</script>
+
+<script>
+    <% let naserv = 0; %>
+    <% let wipserv = 0; %>
+    <% for(let i = 0; i < foundBug.length; i++) { %>
+        <% if(foundBug[i].status == `Not being worked on`) {%>
+            <% naserv = naserv + 1 %>
+        <% } if(foundBug[i].status == `Work in Progress`) { %>
+            <% wipserv = wipserv + 1%>
+        <% } }%>    
+    let nacli = <%= naserv %>;
+    let wipcli = <%= wipserv %>;
+    var stat = $(`#statusChart`);
+    var statChart = new Chart(stat, {
+        type: `doughnut`,
+        data: {
+            labels: [`Not being worked on`, `Work in Progress`],
+            datasets: [{
+                label: `Points`,
+                backgroundColor: [`#f1c40f`, `#e67e22`],
+                data: [nacli, wipcli]
+            }]
+        },
+        options: {
+            responsive: false
+        }
+    })
+</script>
+<script>
+    <% let unserv = 0; %>
+    <% let assserv = 0; %>
+    <% for(let i = 0; i < foundBug.length; i++) { %>
+        <% if(foundBug[i].status != `Fixed`) {%>
+            <% if(foundBug[i].assignedTo == `unassigned`) { %>
+                <% unserv = unserv + 1 %>
+        <% } else  { %>
+            <% assserv = assserv + 1%>
+        <% } } }%>      
+    let uncli = <%= unserv %>;
+    let asscli = <%= assserv %>;
+    var stat = $(`#unassignedChart`);
+    var statChart = new Chart(stat, {
+        type: `doughnut`,
+        data: {
+            labels: [`Unassigned`, `Assigned`],
+            datasets: [{
+                label: `Points`,
+                backgroundColor: [`#f1c40f`, `#e67e22`],
+                data: [uncli, asscli]
+            }]
+        },
+        options: {
+            responsive: false
+        }
+    })
+</script>
+<script>
+    <% let oneServ = 0; %>
+    <% let twoServ = 0; %>
+    <% let threeServ = 0; %>
+    <% let fourServ = 0; %>
+    <% let fiveServ = 0; %> 
+    <% for(let i = 0; i < foundBug.length; i++) { %>
+        <% if(foundBug[i].status != `Fixed`) {%>
+        <% if(foundBug[i].priority == 1) {%>
+            <% oneServ = oneServ + 1 %>
+        <% } if(foundBug[i].priority == 2) { %>
+            <% twoServ = twoServ + 1%>
+        <% } if(foundBug[i].priority == 3) { %>
+            <% threeServ = threeServ + 1%>
+        <% } if(foundBug[i].priority == 4) { %>
+            <% fourServ = fourServ + 1%>
+        <% } if(foundBug[i].priority == 5) { %>
+            <% fiveServ = fiveServ + 1%>            
+        <% } } }%>    
+    let oneCli = <%= oneServ %>;
+    let twoCli = <%= twoServ %>;
+    let threeCli = <%= threeServ %>;
+    let fourCli = <%= fourServ %>;
+    let fiveCli = <%= fiveServ %>;
+    var stat = $(`#priorityChart`);
+    var statChart = new Chart(stat, {
+        type: `doughnut`,
+        data: {
+            labels: [`1`, `2`, `3`, `4`, `5`],
+            datasets: [{
+                label: `Points`,
+                backgroundColor: [`red`, `yellow`, `turqouise`, `green`, `blue`],
+                data: [oneCli, twoCli, threeCli, fourCli, fiveCli]
+            }]
+        },
+        options: {
+            responsive: false
+        }
+    })
+</script>
+<%- include(`../partials/footer`) %>

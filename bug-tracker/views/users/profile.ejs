@@ -1,0 +1,11 @@
+<%- include(`../partials/head`) %>
+<%- include(`../partials/header`) %>
+<h1>Welcome, <span style="text-transform: capitalize;"><%= user.firstName %> <%= user.lastName %></span></h1>
+<p>Your email is <%= user.email %></p>
+<a class="button" style="margin: 1rem;" href="/index/filtered">Bugs assigned to me</a>
+<a class="button"  href="/main">Main Page</a>
+<a class="button" style="width: fit-content; margin-top: 1rem" href="" style="pointer-events: none">Edit User</a>
+
+
+
+<%- include(`../partials/footer`) %>
