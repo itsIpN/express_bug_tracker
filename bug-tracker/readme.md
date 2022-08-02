@@ -19,7 +19,11 @@ Description: A basic bug tracker that allows multiple team members to create ent
 
 # Future Enhancements
 
+Add ability for user to change password & user info (also add profile pictures)
+
 Add ability to add comments on bugs and projects
+
+Add Search Bar for Select for User Assignments
 
 Change authentication from session based to token based
 

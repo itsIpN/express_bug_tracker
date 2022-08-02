@@ -1,24 +1,39 @@
 <%- include(`../partials/head`) %>
 <%- include(`../partials/header`) %>
 
-<h1>Login</h1>
-<% if(err) { %>
-    <p style="color: red; margin: 1rem">
-        <%= err %>
-    </p>
-<% } %>
-<form action="/user/login" method="POST">
-    <label for="email">
-        Email 
-        <input type="email" name="email" id="email" autofocus required/>
-    </label>
-    <label for="password">
-        Password 
-        <input type="password" name="password" id="password" required/>
-    <label for="submit">
-        <input class="button" type="submit" id="submit" value="Login">
-    </label>
 
-</form>
+
+<div class="row content d-flex justify-content-center">
+    <div class="col-md-5">
+        <div class="box p-4">
+            <div class="col-md-12 fw-bold fs-1 text-center">Login</div>
+            <div class="col-md-12 fs-5 text-center"><% if(err) { %>
+                <p style="color: red; margin: 1rem">
+                    <%= err %>
+                </p>
+            <% } %></div>
+            <form class="mb-3" action="/user/login" method="POST">
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control rounded-0 <% if(err) { %> is-invalid <% } %>" name="email" id="email" placeholder="placeholder@email.com" autofocus required/>
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control rounded-0 <% if(err) { %> is-invalid <% } %>" name="password" id="password" placeholder="placeholder" required/>
+                    <label for="password">Password</label>                    
+                </div>
+                <div class="d-grid gap-2 mb-3">
+                    <input class="btn btn-outline-dark" data-mdb-ripple-color="dark" type="submit" id="submit" value="Login">
+                </div>           
+            </form>
+            <div class="col-md-12 fs-5 text-center">
+                <p>Don't Have an Account?</p>
+            </div>
+            <div class="d-grid gap-2 mb-3">
+                <a class="btn btn-outline-dark" data-mdb-ripple-color="dark" href="/user/register">Register</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 
 <%- include(`../partials/footer`) %>

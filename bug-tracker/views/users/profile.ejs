@@ -1,7 +1,10 @@
 <%- include(`../partials/head`) %>
 <%- include(`../partials/header`) %>
-<div class="col-md-12 fw-bold fs-1 ">Welcome, <span style="text-transform: capitalize;"><%= user.firstName %> <%= user.lastName %></div>
-<div>
+<div class="content">
+<div class="row">
+  <div class="col-md-12 fw-bold fs-1 ">Welcome, <span style="text-transform: capitalize;"><%= user.firstName %> <%= user.lastName %></div>
+</div>
+<div class="row">
     <nav class="navbar navbar-expand-xl shadow-none">
         <div class="container-fluid">
             <ul class="navbar-nav">
@@ -9,16 +12,25 @@
                 <a class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="margin-right: 1rem;" href="/index/filtered">Bugs assigned to me</a>
               </li>
               <li class="nav-item">
-                <a class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="width: fit-content; margin-right: 1rem" href="" style="pointer-events: none">Edit User</a>
+                <a class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="width: fit-content; margin-right: 1rem" href="" style="pointer-events: none">Edit Profile</a>
               </li> 
             </ul>
           </div>
-        </div>
     </nav>
 </div>
-<p>Your email is <%= user.email %></p>
-
-
+<div class="row p-3">
+<div class="card shadow-none p-3">
+  <dl class="row">
+      <dt class="col-sm-3">Name: </dt>
+      <dd class="col-sm-9"><%= user.firstName %> <%= user.lastName %></dd>
+      <dt class="col-sm-3">Title: </dt>
+      <dd class="col-sm-9"><%= user.title %></dd>
+      <dt class="col-sm-3">Email: </dt>
+      <dd class="col-sm-9"><%= user.email %></dd>
+  </dl>
+</div>  
+</div>
+</div>
 
 
 

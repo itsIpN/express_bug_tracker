@@ -21,11 +21,10 @@
                 </li>
             <%  } %> 
             </ul>
-          </div>
         </div>
     </nav>
 </div>
-<div class="row">
+<div class="row mt-3 mb-3">
     <div class="col-md-12">
         <div class="card">
             <div class="card-header">Description</div>
@@ -43,13 +42,13 @@
     <div class="col-sm-4">
         <div class="card">
             <div class="card-header">Bug Assignments</div>
-            <div class="card-body chart-container"><canvas id="unassignedChart" ></canvas></canvas></div>
+            <div class="card-body chart-container"><canvas id="unassignedChart" ></canvas></div>
         </div>
     </div>
     <div class="col-sm-4">
         <div class="card">
             <div class="card-header">Bug Priorities</div>
-            <div class="card-body chart-container"><canvas id="priorityChart" ></canvas></canvas></div>
+            <div class="card-body chart-container"><canvas id="priorityChart" ></canvas></div>
         </div>
     </div>
 </div>
@@ -114,7 +113,10 @@
     
 <script>
     $(document).ready( function () {
-    $('#bugTable').DataTable();
+    $('#bugTable').DataTable({
+        fixedHeader: true,
+        responsive: true
+    });
     } );
 </script>
 
@@ -141,7 +143,7 @@
             labels: [`Not being worked on`, `Work in Progress`, `Fixed`],
             datasets: [{
                 label: `Points`,
-                backgroundColor: [`#f1c40f`, `#e67e22`, `green`],
+                backgroundColor: [`#E98725`, `#F7DE3A`, `#61C100`],
                 data: [nacli, wipcli, fixcli]
             }]
         },
@@ -227,7 +229,7 @@
             labels: [`1`, `2`, `3`, `4`, `5`],
             datasets: [{
                 label: `Points`,
-                backgroundColor: [`red`, `yellow`, `turqouise`, `green`, `blue`],
+                backgroundColor: [`#C10000`, `#E98725`, `#F7DE3A`, `#61C100`, `#0F5ED8`],
                 data: [oneCli, twoCli, threeCli, fourCli, fiveCli]
             }]
         },

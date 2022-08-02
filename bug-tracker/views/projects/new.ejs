@@ -1,19 +1,27 @@
 <%- include(`../partials/head`) %>
 <%- include(`../partials/header`) %>
 
-<h1>Add New Project</h1>
-<form action="/projects" method="POST">
-    <label for="title">
-        Title
-        <input id="title" type="text" name="title" autofocus required>
-    </label>
-    <label for="comments">
-        Description
-        <textarea id="comments" name="comments" cols="30" rows="10" required></textarea>
-    </label>
-    <button class="button" type="submit">Add</button>
-</form>
 
+<div class="row content d-flex justify-content-center">
+    <div class="col-md-5">
+        <div class="box p-4">
+            <div class="col-md-12 fw-bold fs-1 text-center">Create New Project</div>
+            <form class="mb-3" action="/projects" method="POST">
+                <div class="form-group mb-3">
+                    <label for="title">Title</label>
+                    <input id="title" class="form-control rounded-0" type="text" name="title" placeholder="Title" autofocus required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="comments">Description</label>
+                    <textarea class="form-control" id="comments" name="comments" cols="30" rows="10" required></textarea>
+                </div>
+                <div class="d-grid gap-2 mb-3">
+                    <input class="btn btn-outline-dark" data-mdb-ripple-color="dark" type="submit" value="Create New Project">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 
 
 <%- include(`../partials/footer`) %>

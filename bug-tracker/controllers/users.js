@@ -9,6 +9,14 @@ const moment = require(`moment`)
 const router = require(`express`).Router();
 
 //routes
+//check user session
+router.use(function(req,res, next) {
+    if(req.session.user){
+        next();
+    } else {
+        res.redirect(`/user/login`);
+    }
+})
 //INDEX (get login form)
 router.get(`/login`, (req, res) => {
     res.render(`./users/login.ejs`, {err: ``})
@@ -86,7 +94,7 @@ router.post(`/register`, (req, res) => {
     req.body.role = `User`;
     User.create(req.body, (err, user) => {
         if(err) {
-            res.render(`./users/register.ejs`, { err: err})
+            res.render(`./users/register.ejs`, { err: `This email is already in use`})
         } else {
             req.session.user = user._id // this is a login
             res.redirect(`/main`)
@@ -99,7 +107,7 @@ router.post(`/register`, (req, res) => {
 //SHOW current user profile
 router.get(`/profile`, (req, res) => {
     User.findById(req.session.user, (err, user) => {
-        res.render(`./users/profile.ejs`)
+        res.render(`./users/profile.ejs`, {user})
     })
 })
 

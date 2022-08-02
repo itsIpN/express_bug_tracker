@@ -2,7 +2,7 @@
 const Bugs = require(`../models/data`);
 const User = require(`../models/user-data`);
 const Project = require(`../models/project.name`);
-const moment = require(`moment`)
+const moment = require(`moment`);
 
 //router object
 const router = require(`express`).Router();

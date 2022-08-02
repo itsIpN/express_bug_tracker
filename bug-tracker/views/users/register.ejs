@@ -1,36 +1,52 @@
 <%- include(`../partials/head`) %>
 <%- include(`../partials/header`) %>
 
-<% if(err) { %>
-    <p style="color: red;  margin: 1rem"><%= err %></p>
-<% } %>
-<h1>User Registration</h1>
-    <form action="/user/register" method="POST">
-        <label for="firstName">
-            First Name
-            <input type="text" name="firstName" id="firstName" autofocus required>
-        </label>
-        <label for="lastName">
-            Last Name
-            <input type="text" name="lastName" id="lastName" required>
-        </label>
-        <label for="title">
-            Title
-            <input type="text" name="title" id="title" required>
-        </label>
-        <label for="email">
-            Email
-            <input type="email" name="email" id="email"  required>
-        </label>
-        <label for="password">
-            Password
-            <input type="password" name="password" id="password" minlength="8" required>
-        </label>
-        <input class="button" type="submit" value="Register">
-    </form>
-    <div class="redirect">
-        <p>Already have an account?</p>
-        <a class="button" href="/user/login">Login</a>
+
+<div class="row content d-flex justify-content-center">
+    <div class="col-md-5">
+        <div class="box p-4">
+            <div class="col-md-12 fw-bold fs-1 text-center">User Registration</div>
+            <div class="col-md-12 fs-5 text-center"><% if(err) { %>
+                <p style="color: red; margin: 1rem">
+                    <%= err %>
+                </p>
+            <% } %></div>
+            <form class="mb-3" action="/user/register" method="POST">
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control rounded-0" name="firstName" id="firstName" placeholder="placeholder" autofocus required>
+                    <label for="firstName">First Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control rounded-0" name="lastName" id="lastName" placeholder="placeholder" required>
+                    <label for="lastName">Last Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control rounded-0" name="title" id="title" placeholder="placeholder" required>
+                    <label for="title">Title</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control rounded-0" name="email" id="email" placeholder="placeholder" required>
+                    <label for="email">Email</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control rounded-0" name="password" id="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"  title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="placeholder" required>
+                    <label for="password">Password</label>
+                </div>
+                <div class="d-grid gap-2 mb-3">
+                    <input class="btn btn-outline-dark" data-mdb-ripple-color="dark" type="submit" value="Register">
+                </div>
+            </form>
+            <div class="col-md-12 fs-5 text-center">
+                <p>Already have an account?</p>
+            </div>
+            <div class="d-grid gap-2 mb-3">
+                <a class="btn btn-outline-dark" data-mdb-ripple-color="dark" href="/user/login">Login</a>
+            </div>
+        </div>
     </div>
+</div>
+
+
+
 
 <%- include(`../partials/footer`) %>

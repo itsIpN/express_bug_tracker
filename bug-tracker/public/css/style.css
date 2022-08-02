@@ -34,6 +34,15 @@ hr.h-color{
     transform: rotate(180deg);
 }
 
+body{
+    background-color: #F5F5F5;
+}
+
+.line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+  }
 
 @media(max-width: 767px){
     #side_nav{

@@ -1,15 +1,33 @@
 <%- include(`../partials/head`) %>
 <%- include(`../partials/header`) %>
 
-<ul>
-<% projects.forEach((projects, index) => { %>
-   <li> <a href="/projects/<%=projects._id %>"> <%= projects.title %></a></li>
 
 
-<% }) %>
-</ul>
-<div> <a href="/projects/new" class="btn btn-outline-primary">Add New Project</a> 
-
-
+<div class="row">
+   <div class="col-md-12 fw-bold fs-1 ">Projects List</div>
+</div>
+<div class="row">
+      <nav class="navbar navbar-expand-xl shadow-none">
+          <div class="container-fluid">
+              <ul class="navbar-nav">
+                  <li class="nav-item">
+                      <a href="/projects/new" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="margin-right: 1rem;">Add New Project</a>
+                  </li>                     
+              </ul>
+          </div>
+      </nav>
+</div>
+<div class="row">
+   <% projects.forEach((projects, index) => { %>
+      <div class="col-md-6">
+      <div class="card text-bg-light mb-3" style="max-width: 60rem;">
+         <div class="card-body">
+           <h5 class="card-title"><a class="link-dark" href="/projects/<%=projects._id %>"> <%= projects.title %></a></h5>
+           <p class="card-text text-truncate"><%= projects.comments %></p>
+         </div>
+       </div>
+      </div>   
+   <% }) %>
+</div>
 
 <%- include(`../partials/footer`) %>
