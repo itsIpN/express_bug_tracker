@@ -10,13 +10,7 @@ const router = require(`express`).Router();
 
 //routes
 //check user session
-router.use(function(req,res, next) {
-    if(req.session.user){
-        next();
-    } else {
-        res.redirect(`/user/login`);
-    }
-})
+
 //INDEX (get login form)
 router.get(`/login`, (req, res) => {
     res.render(`./users/login.ejs`, {err: ``})
