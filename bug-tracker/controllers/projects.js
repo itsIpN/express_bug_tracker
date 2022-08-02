@@ -2,6 +2,7 @@
 const Bugs = require(`../models/data`);
 const User = require(`../models/user-data`);
 const Project = require(`../models/project.name`);
+const moment = require(`moment`)
 
 //router object
 const router = require(`express`).Router();
@@ -28,16 +29,6 @@ router.get(`/`, (req, res) => {
     })
 })
 
-//filtered index
-router.get(`/filtered`, (req, res) => {
-    User.findById(req.session.user, (error, user) => {
-        Project.find({ user: req.session.user}, (error, projects) => {
-            res.render(`./projects/index.ejs`, {projects, name: `${user.name}`, user: req.session.user})
-        })
-    })
-})
-
-
 
 //NEW
 router.get(`/new`, (req, res) => {
@@ -55,18 +46,13 @@ router.delete(`/:id`, (req, res) => {
 
 
 //UPDATE
-router.put(`:id`, (req, res) => {
-    if (req.body.fixed) {
-        req.body.fixed = true
-    } else {
-        req.body.fixed = false
-    }
+router.patch(`/:id`, (req, res) => {
     Project.findByIdAndUpdate(
         req.params.id,
         req.body,
         { new: true},
         (error, updatedProject) => {
-            res.redirect(`/main/${req.params.id}`)
+            res.redirect(`/projects/${req.params.id}`)
         }
     )
 })
@@ -97,7 +83,7 @@ router.get(`/:id`, (req, res) => {
         Bugs.find({project: foundProject.title}, (err, foundBug) => {
             User.findById(req.session.user, (err, user) => {
                 User.find({}, (err, userList) => {
-                    res.render(`./projects/show.ejs`, {foundProject, currentUser: req.session.user, foundBug, role: user.role, userList})
+                    res.render(`./projects/show.ejs`, {foundProject, currentUser: req.session.user, foundBug, role: user.role, userList, moment})
                 })
             })            
         })        

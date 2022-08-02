@@ -1,34 +1,63 @@
 <%- include(`../partials/head`) %>
 <%- include(`../partials/header`) %>
 
-<h1><%= foundProject.title %></h1>
-<a class="button" style="margin: 1rem;" href="/main">Main Page</a>
-<div class="">
-    <div class="">
-        <p><%= foundProject.comments %></p>
 
-        <% if (currentUser === foundProject.user.toString() || role === "Admin" || role === "Team Leader") { %>
-        <a class="btn" href="/projects/<%= foundProject._id %>/edit">Edit</a>
-        <form class="delete-form" action="/projects/<%= foundProject._id %>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete" class="btn">
-        </form>
-        <% } else { %>
-        <p style="color: red">You can't edit or delete this project</p>
-        <%  } %>
-        <div> <a href="/index/new?project=<%=foundProject._id %>" class="btn"> Track New Bug</a></div>
+<div class="col-md-12 fw-bold fs-1 "><%= foundProject.title %></div>
+<div>
+    <nav class="navbar navbar-expand-xl shadow-none">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a href="/index/new?project=<%=foundProject._id %>" class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="margin-right: 1rem;"> Track New Bug</a>
+                </li>                     
+              <% if (currentUser === foundProject.user.toString() || role === "Admin" || role === "Team Leader") { %>
+                <li class="nav-item">
+                    <a class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="margin-right: 1rem;" href="/projects/<%= foundProject._id %>/edit">Edit</a>
+                </li>
+                <li class="nav-item">
+                    <form class="delete-form" action="/projects/<%= foundProject._id %>?_method=DELETE" method="POST">
+                        <input type="submit" value="Delete" class="btn btn-outline-danger" data-mdb-ripple-color="dark" style="margin-right: 1rem;" >
+                    </form>
+                </li>
+            <%  } %> 
+            </ul>
+          </div>
+        </div>
+    </nav>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">Description</div>
+            <div class="card-body"><%= foundProject.comments %></div>
+        </div>
     </div>
 </div>
-
-<div>
-    <canvas id="statusChart"  height="300"></canvas>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header">Bug Status</div>
+            <div class="card-body chart-container"><canvas id="statusChart" ></canvas></div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header">Bug Assignments</div>
+            <div class="card-body chart-container"><canvas id="unassignedChart" ></canvas></canvas></div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header">Bug Priorities</div>
+            <div class="card-body chart-container"><canvas id="priorityChart" ></canvas></canvas></div>
+        </div>
+    </div>
 </div>
-<div>
-    <canvas id="unassignedChart"  height="300"></canvas>
-</div>
-<div>
-    <canvas id="priorityChart"  height="300"></canvas>
-</div>
-<div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">Data table</div>
+                <div class="card-body">
     <table class="table align-middle mb-0 bg-white" id="bugTable">
         <thead class="bg-light">
           <tr>
@@ -38,6 +67,8 @@
             <th class="th-sm">Status</th>
             <th class="th-sm">Assigned To</th>
             <th class="th-sm">Actions</th>
+            <th class="th-sm">Date Created</th>
+            <th class="th-sm">Last Updated</th>
           </tr>
         </thead>
         <tbody>
@@ -66,12 +97,20 @@
                 Details
             </a>
 
-            </td>                    
+            </td>
+            <td>
+                <%= moment(foundBug.createdAt).format('MMMM Do YYYY, h:mm:ss a');  %>
+            </td>
+            <td>
+                <%= moment(foundBug.updatedAt).format('MMMM Do YYYY, h:mm:ss a');  %>
+            </td>                       
           </tr>
         <% }) %> 
         </tbody>
     </table>
-    </div>
+</div>
+</div>
+</div>
     
 <script>
     $(document).ready( function () {
@@ -79,30 +118,44 @@
     } );
 </script>
 
+
 <script>
     <% let naserv = 0; %>
     <% let wipserv = 0; %>
+    <% let fixserv = 0; %>
     <% for(let i = 0; i < foundBug.length; i++) { %>
         <% if(foundBug[i].status == `Not being worked on`) {%>
             <% naserv = naserv + 1 %>
-        <% } if(foundBug[i].status == `Work in Progress`) { %>
+        <% } else if(foundBug[i].status == `Work in Progress`) { %>
             <% wipserv = wipserv + 1%>
+        <% } else { %>
+            <% fixserv = fixserv + 1%>
         <% } }%>    
     let nacli = <%= naserv %>;
     let wipcli = <%= wipserv %>;
-    var stat = $(`#statusChart`);
-    var statChart = new Chart(stat, {
+    let fixcli = <%= fixserv %>;
+    var ctx = $(`#statusChart`);
+    var statChart = new Chart(ctx, {
         type: `doughnut`,
         data: {
-            labels: [`Not being worked on`, `Work in Progress`],
+            labels: [`Not being worked on`, `Work in Progress`, `Fixed`],
             datasets: [{
                 label: `Points`,
-                backgroundColor: [`#f1c40f`, `#e67e22`],
-                data: [nacli, wipcli]
+                backgroundColor: [`#f1c40f`, `#e67e22`, `green`],
+                data: [nacli, wipcli, fixcli]
             }]
         },
         options: {
-            responsive: false
+            responsive: true,
+            animation: {
+            animateScale: true
+           },
+             plugins: {
+                legend: {
+                    position: `right`,
+                }
+              },
+              maintainAspectRatio: false,
         }
     })
 </script>
@@ -118,8 +171,8 @@
         <% } } }%>      
     let uncli = <%= unserv %>;
     let asscli = <%= assserv %>;
-    var stat = $(`#unassignedChart`);
-    var statChart = new Chart(stat, {
+    var ctx2 = $(`#unassignedChart`);
+    var assChart = new Chart(ctx2, {
         type: `doughnut`,
         data: {
             labels: [`Unassigned`, `Assigned`],
@@ -130,7 +183,16 @@
             }]
         },
         options: {
-            responsive: false
+            responsive: true,
+            animation: {
+            animateScale: true
+           },
+             plugins: {
+                legend: {
+                    position: `right`,
+                }
+              },
+              maintainAspectRatio: false,
         }
     })
 </script>
@@ -158,8 +220,8 @@
     let threeCli = <%= threeServ %>;
     let fourCli = <%= fourServ %>;
     let fiveCli = <%= fiveServ %>;
-    var stat = $(`#priorityChart`);
-    var statChart = new Chart(stat, {
+    var ctx3 = $(`#priorityChart`);
+    var prioChart = new Chart(ctx3, {
         type: `doughnut`,
         data: {
             labels: [`1`, `2`, `3`, `4`, `5`],
@@ -170,7 +232,16 @@
             }]
         },
         options: {
-            responsive: false
+            responsive: true,
+            animation: {
+            animateScale: true
+           },
+             plugins: {
+                legend: {
+                    position: `right`,
+                }
+              },
+              maintainAspectRatio: false,
         }
     })
 </script>

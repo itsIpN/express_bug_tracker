@@ -1,23 +1,87 @@
-<% if (user)console.log(`################################
- USER: ${user} 
- ################################`) %>
-<header>
-    <h1>
-        <% if(user) { %>
-            <a href="/main">Bug Tracker</a>
-            <% } else { %>
-            <a href="/user/login">Bug Tracker</a>
-            <% } %>
-    </h1>
 
-    <nav>
-        <% if(user) { %>
-        <a href="/user/logout" class="btn btn-outline-primary">Logout</a>
-        <a href="/user/profile" class="btn btn-outline-primary">Profile</a>
-        <% } else { %>
-        <a href="/user/register" class="btn btn-outline-primary">Register</a>
-        <a href="/user/login" class="btn btn-outline-primary">Login</a>
-        <% } %>
-    </nav>
-</header>
-<main>
+<div class="main-container d-flex">
+    <div class="sidebar navbar-dark bg-dark" id="side_nav">
+        <div class="header-box px-2 pt-3 pb-4 d-flex justify-content-between">
+            <h1 class="fs-3"><span class="bg-white text-dark rounded shadow px-2 me-2"><i class="fa-solid fa-bug-slash"></i></span> <span class="text-white">Bug Tracker</span></h1>
+            <button class="btn d-md-none d-block close-btn px-1 py-0 text-white"><i class="fa-solid fa-bars"></i></button>
+        </div>
+        <ul class="list-unstyled px-2 navbar-nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link px-3 fs-4" 
+          <% if(user) { %>
+            href="/main"
+            <% } else { %>
+            href="/user/login"
+            <% } %>
+          href="#">Main Page</a>
+            </li>
+            <li class="my-4 nav-item"><hr class="dropdown-divider"/></li>
+            <% if(user) { %>
+                <li class="nav-item"><a class="nav-link px-3 fs-5" href="/main/roles">User Accounts</a></li>
+                <li class="nav-item">
+                    <a class="nav-link px-3 sidebar-link fs-5" data-bs-toggle="collapse" href="#project" role="button" aria-expanded="false" aria-controls="project">
+                      <span>Projects</span>
+                      <span class="right-icon ms-auto"><i class="fa-solid fa-chevron-down"></i></span>
+                    </a>                     
+                  <div class="collapse" id="project">
+                    <div>
+                        <ul class="navbar-nav ps-3">
+                            <li><a class="nav-link px-3 fs-5" href="/projects">Project List</a></li>
+                            <li><a class="nav-link px-3 fs-5" href="/projects/new" >Add New Project</a></li>
+                        </ul>
+                    </div>
+                  </div>
+                </li>
+                <li class="nav-item">
+                        <a class="nav-link px-3 sidebar-link fs-5" data-bs-toggle="collapse" href="#bug" role="button" aria-expanded="false" aria-controls="bug">
+                          <span>Bugs</span>
+                          <span class="right-icon ms-auto"><i class="fa-solid fa-chevron-down"></i></span>
+                        </a>                     
+                      <div class="collapse" id="bug">
+                        <div>
+                            <ul class="navbar-nav ps-3">
+                                <li><a class="nav-link px-3 fs-5" href="/index">Bugs List</a></li>
+                                <li><a class="nav-link px-3 fs-5" href="/index/filtered" >Bugs Assigned to Me</a></li>
+                            </ul>
+                        </div>
+                      </div>
+                </li>
+            <% } else { %>
+
+            <% } %>
+        </ul>
+        <hr class="h-color mx-2">
+    </div>
+    <div class="content">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <div class="d-flex justify-content-between d-md-none d-block">
+                    <button class="btn px-1 py-0 open-btn shadow-none"><i class="fa-solid fa-bars"></i></button>
+                    <a class="navbar-brand fs-4" href="#"><i class="fa-solid fa-bug-slash"></i></a>
+                </div>
+
+              <div class="ms-auto" id="navbarSupportedContent">
+                <ul class="navbar-nav mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fa-solid fa-user-large"></i>
+                      </a>
+                      <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                        <% if(user) { %>
+                            <li><a href="/user/profile" class="dropdown-item">Profile</a></li>
+                            <li><a href="/user/logout" class="dropdown-item">Logout</a></li>
+                        <% } else { %>
+                            <li><a href="/user/login" class="dropdown-item">Login</a></li>
+                            <li><a href="/user/register" class="dropdown-item">Register</a></li>
+                        <% } %>
+                      </ul>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+        </nav>
+   
+<main class="mt-1 pt-3">
+    <div class="container-fluid">
+

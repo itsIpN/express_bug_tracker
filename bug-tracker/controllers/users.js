@@ -3,6 +3,7 @@ const User = require(`../models/user-data`);
 const Bugs = require(`../models/data`);
 const bcrypt = require(`bcrypt`);
 const SALTROUNDS = 10;
+const moment = require(`moment`)
 
 //router object
 const router = require(`express`).Router();
@@ -81,7 +82,6 @@ router.post(`/login`, (req, res) => {
 //create new user
 router.post(`/register`, (req, res) => {
     const hash = bcrypt.hashSync(req.body.password, bcrypt.genSaltSync(SALTROUNDS));
-    console.log(`i'm here this is working`)
     req.body.password = hash;
     req.body.role = `User`;
     User.create(req.body, (err, user) => {
@@ -118,7 +118,7 @@ router.get(`/:id`, (req, res) => {
 router.get(`/:id/filtered`, (req, res) => {
     User.findById(req.params.id, (error, user) => {
         Bugs.find({ assignedTo: req.params.id}, (error, bugs) => {
-            res.render(`./bugs/filtered-index.ejs`, {bugs, name: user.name, user})
+            res.render(`./bugs/filtered-index.ejs`, {bugs, user, moment})
         })
     })
 })

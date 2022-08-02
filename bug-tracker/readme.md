@@ -18,3 +18,10 @@ Description: A basic bug tracker that allows multiple team members to create ent
 
 
 # Future Enhancements
+
+Add ability to add comments on bugs and projects
+
+Change authentication from session based to token based
+
+Add Light Mode / Dark Mode Functionality
+

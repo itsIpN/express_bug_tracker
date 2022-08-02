@@ -1,7 +1,7 @@
 //dependencies
 const Bugs = require(`../models/data`);
 const User = require(`../models/user-data`);
-const Project = require(`../models/project.name`);
+const moment = require(`moment`)
 
 //router object
 const router = require(`express`).Router();
@@ -18,8 +18,10 @@ router.use(function(req,res, next) {
 
 //index of all
 router.get(`/`, (req, res) => {
-    Project.find({}, (error, projects) => {
-        res.render(`./main/main.ejs`, { projects, name: ``, user: req.session.user})
+    Bugs.find({}, (error, bugs) => {
+        User.find({}, (err, userList) => {
+            res.render(`./main/main.ejs`, { bugs, name: ``, user: req.session.user, userList, moment})
+        })
     })
 })
 

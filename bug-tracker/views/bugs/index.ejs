@@ -1,63 +1,87 @@
 <%- include(`../partials/head`) %>
 <%- include(`../partials/header`) %>
-<a class="button" href="/main">Go back</a>
 
 
-<div>
-    <canvas id="statusChart"  height="300"></canvas>
-</div>
-<div>
-    <canvas id="unassignedChart"  height="300"></canvas>
-</div>
-<div>
-    <canvas id="priorityChart"  height="300"></canvas>
-</div>
-
-
-<div>
-    <table class="table align-middle mb-0 bg-white" id="bugTable">
-        <thead class="bg-light">
-          <tr>
-            <th class="th-sm">Bug Name</th>
-            <th class="th-sm">Project</th>
-            <th class="th-sm">Priority</th>
-            <th class="th-sm">Status</th>
-            <th class="th-sm">Assigned To</th>
-            <th class="th-sm">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-        <% bugs.forEach((bugs, index) => { %>
-          <tr>
-            <td>
-              <div class="d-flex align-items-center">
-                <div class="ms-3">
-                  <p class="fw-bold mb-1"><%= bugs.title %></p>
-                </div>
-              </div>
-            </td>
-            <td><%= bugs.project %></td>
-            <td><%= bugs.priority %></td>
-            <td><%= bugs.status %></td>
-            <% if(bugs.assignedTo === `unassigned`) { %>
-                <td><%= bugs.assignedTo %></td>
-            <% } else { %> 
-                <% for(let i = 0; i < userList.length; i++) { %>
-                    <% if(userList[i]._id == bugs.assignedTo) { %>
-                        <td><%= userList[i].firstName %> <%= userList[i].lastName %></td>        
-                    <% }}} %>
-            <td>
-
-            <a href="/index/<%= bugs._id %>" class="btn btn-link btn-sm btn-rounded">
-                Details
-            </a>
-
-            </td>                    
-          </tr>
-        <% }) %> 
-        </tbody>
-    </table>
+<div class="col-md-12 fw-bold fs-1 ">Compiled Bug List</div>
+<div class="row">
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header">Bug Status</div>
+            <div class="card-body chart-container"><canvas id="statusChart"></canvas></div>
+        </div>
     </div>
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header">Bug Assignments</div>
+            <div class="card-body chart-container"><canvas id="unassignedChart" ></canvas></canvas></div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card">
+            <div class="card-header">Bug Priorities</div>
+            <div class="card-body chart-container"><canvas id="priorityChart" ></canvas></canvas></div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">Data table</div>
+            <div class="card-body">
+                <table class="table align-middle mb-0 bg-white" id="bugTable">
+                    <thead class="bg-light">
+                      <tr>
+                        <th class="th-sm">Bug Name</th>
+                        <th class="th-sm">Project</th>
+                        <th class="th-sm">Priority</th>
+                        <th class="th-sm">Status</th>
+                        <th class="th-sm">Assigned To</th>
+                        <th class="th-sm">Actions</th>
+                        <th class="th-sm">Date Created</th>
+                        <th class="th-sm">Last Updated</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    <% bugs.forEach((bugs, index) => { %>
+                      <tr>
+                        <td>
+                          <div class="d-flex align-items-center">
+                            <div class="ms-3">
+                              <p class="fw-bold mb-1"><%= bugs.title %></p>
+                            </div>
+                          </div>
+                        </td>
+                        <td><%= bugs.project %></td>
+                        <td><%= bugs.priority %></td>
+                        <td><%= bugs.status %></td>
+                        <% if(bugs.assignedTo === `unassigned`) { %>
+                            <td><%= bugs.assignedTo %></td>
+                        <% } else { %> 
+                            <% for(let i = 0; i < userList.length; i++) { %>
+                                <% if(userList[i]._id == bugs.assignedTo) { %>
+                                    <td><%= userList[i].firstName %> <%= userList[i].lastName %></td>        
+                                <% }}} %>
+                        <td>
+                        <a href="/index/<%= bugs._id %>" class="btn btn-link btn-sm btn-rounded">
+                            Details
+                        </a>
+                        </td>
+                        <td>
+                            <%= moment(bugs.createdAt).format('MMMM Do YYYY, h:mm:ss a');  %>
+                        </td>
+                        <td>
+                            <%= moment(bugs.updatedAt).format('MMMM Do YYYY, h:mm:ss a');  %>
+                        </td>                    
+                      </tr>
+                    <% }) %> 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
     
 <script>
     $(document).ready( function () {
@@ -68,27 +92,40 @@
 <script>
     <% let naserv = 0; %>
     <% let wipserv = 0; %>
+    <% let fixserv = 0; %>
     <% for(let i = 0; i < bugs.length; i++) { %>
         <% if(bugs[i].status == `Not being worked on`) {%>
             <% naserv = naserv + 1 %>
-        <% } if(bugs[i].status == `Work in Progress`) { %>
+        <% } else if(bugs[i].status == `Work in Progress`) { %>
             <% wipserv = wipserv + 1%>
+        <% } else { %>
+            <% fixserv = fixserv + 1%>
         <% } }%>    
     let nacli = <%= naserv %>;
     let wipcli = <%= wipserv %>;
-    var stat = $(`#statusChart`);
-    var statChart = new Chart(stat, {
+    let fixcli = <%= fixserv %>;
+    var ctx = $(`#statusChart`);
+    var statChart = new Chart(ctx, {
         type: `doughnut`,
         data: {
-            labels: [`Not being worked on`, `Work in Progress`],
+            labels: [`Not being worked on`, `Work in Progress`, `Fixed`],
             datasets: [{
                 label: `Points`,
-                backgroundColor: [`#f1c40f`, `#e67e22`],
-                data: [nacli, wipcli]
+                backgroundColor: [`#f1c40f`, `#e67e22`, `green`],
+                data: [nacli, wipcli, fixcli]
             }]
         },
         options: {
-            responsive: false
+            responsive: true,
+            animation: {
+            animateScale: true
+           },
+             plugins: {
+                legend: {
+                    position: `right`,
+                }
+              },
+              maintainAspectRatio: false,
         }
     })
 </script>
@@ -104,8 +141,8 @@
         <% } } }%>    
     let uncli = <%= unserv %>;
     let asscli = <%= assserv %>;
-    var stat = $(`#unassignedChart`);
-    var statChart = new Chart(stat, {
+    var ctx2 = $(`#unassignedChart`);
+    var assChart = new Chart(ctx2, {
         type: `doughnut`,
         data: {
             labels: [`Unassigned`, `Assigned`],
@@ -116,7 +153,16 @@
             }]
         },
         options: {
-            responsive: false
+            responsive: true,
+            animation: {
+            animateScale: true
+           },
+             plugins: {
+                legend: {
+                    position: `right`,
+                }
+              },
+              maintainAspectRatio: false,
         }
     })
 </script>
@@ -144,8 +190,8 @@
     let threeCli = <%= threeServ %>;
     let fourCli = <%= fourServ %>;
     let fiveCli = <%= fiveServ %>;
-    var stat = $(`#priorityChart`);
-    var statChart = new Chart(stat, {
+    var ctx3 = $(`#priorityChart`);
+    var prioChart = new Chart(ctx3, {
         type: `doughnut`,
         data: {
             labels: [`1`, `2`, `3`, `4`, `5`],
@@ -156,7 +202,16 @@
             }]
         },
         options: {
-            responsive: false
+            responsive: true,
+            animation: {
+            animateScale: true
+           },
+             plugins: {
+                legend: {
+                    position: `right`,
+                }
+              },
+              maintainAspectRatio: false,
         }
     })
 </script>

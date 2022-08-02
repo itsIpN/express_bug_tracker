@@ -2,6 +2,7 @@
 const Bugs = require(`../models/data`);
 const User = require(`../models/user-data`);
 const Project = require(`../models/project.name`);
+const moment = require(`moment`)
 
 //router object
 const router = require(`express`).Router();
@@ -25,7 +26,7 @@ router.use(function(req,res, next) {
 router.get(`/`, (req, res) => {
     Bugs.find({}, (error, bugs) => {
         User.find({}, (err, userList) => {
-            res.render(`./bugs/index.ejs`, { bugs, name: ``, user: req.session.user, userList})
+            res.render(`./bugs/index.ejs`, { bugs, name: ``, user: req.session.user, userList, moment})
         })
     })
 })
@@ -34,7 +35,7 @@ router.get(`/`, (req, res) => {
 router.get(`/filtered`, (req, res) => {
     User.findById(req.session.user, (error, user) => {
         Bugs.find({ assignedTo: req.session.user}, (error, bugs) => {
-            res.render(`./bugs/filtered-index.ejs`, {bugs, user})
+            res.render(`./bugs/filtered-index.ejs`, {bugs, user, moment})
         })
     })
 })

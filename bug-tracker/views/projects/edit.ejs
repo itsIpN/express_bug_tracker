@@ -1,6 +1,17 @@
 <%- include(`../partials/head`) %>
 <%- include(`../partials/header`) %>
 
-
+<h1>Edit <%= foundProject.title %></h1>
+<form action="/projects/<%= foundProject._id %>?_method=PATCH" method="POST">
+    <label for="title">
+        Title
+        <input id="title" type="text" name="title" value="<%= foundProject.title %>" autofocus required>
+    </label>
+    <label for="comments">
+        Description
+        <textarea id="comments" name="comments" cols="30" rows="10" required><%= foundProject.comments %></textarea>
+    </label>
+    <button class="button" type="submit">Edit</button>
+</form>
 
 <%- include(`../partials/footer`) %>

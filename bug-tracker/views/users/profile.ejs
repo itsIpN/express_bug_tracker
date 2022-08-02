@@ -1,10 +1,24 @@
 <%- include(`../partials/head`) %>
 <%- include(`../partials/header`) %>
-<h1>Welcome, <span style="text-transform: capitalize;"><%= user.firstName %> <%= user.lastName %></span></h1>
+<div class="col-md-12 fw-bold fs-1 ">Welcome, <span style="text-transform: capitalize;"><%= user.firstName %> <%= user.lastName %></div>
+<div>
+    <nav class="navbar navbar-expand-xl shadow-none">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="margin-right: 1rem;" href="/index/filtered">Bugs assigned to me</a>
+              </li>
+              <li class="nav-item">
+                <a class="btn btn-outline-dark" data-mdb-ripple-color="dark" style="width: fit-content; margin-right: 1rem" href="" style="pointer-events: none">Edit User</a>
+              </li> 
+            </ul>
+          </div>
+        </div>
+    </nav>
+</div>
 <p>Your email is <%= user.email %></p>
-<a class="button" style="margin: 1rem;" href="/index/filtered">Bugs assigned to me</a>
-<a class="button"  href="/main">Main Page</a>
-<a class="button" style="width: fit-content; margin-top: 1rem" href="" style="pointer-events: none">Edit User</a>
+
+
 
 
 
