@@ -7,7 +7,7 @@ const userSession = require(`./controllers/users`);
 const main = require(`./controllers/main`);
 const project = require(`./controllers/projects`);
 require(`dotenv`).config();
-const session = require(`express-session`);
+const session = require(`cookie-session`);
 
 
 const app = express();
