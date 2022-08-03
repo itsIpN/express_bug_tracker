@@ -15,7 +15,7 @@ Description: A basic bug tracker that allows multiple team members to create ent
 
 # Getting Started
 
-
+[Click here](https://fierce-citadel-64968.herokuapp.com/) to try it out!
 
 # Future Enhancements
 
